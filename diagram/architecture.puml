@@ -1,0 +1,19 @@
+@startuml
+
+' !include vendor/office.puml
+!include vendor/azure.puml
+!include config.puml
+
+' skinparam defaultTextAlignment center
+
+AzureAutomation(web, "Web App", "")
+AzureAutomation(keycloak, "Keycloak", "")
+AzureAutomation(auth0, "auth0.com", "")
+
+web --> keycloak :Redirect (oidc)
+keycloak --> auth0 :Redirect (SAML)
+
+auth0 ..> keycloak
+keycloak ..> web
+
+@enduml

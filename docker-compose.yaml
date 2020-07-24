@@ -1,0 +1,18 @@
+version: "3.1"
+
+services:
+  keycloak:
+    image: jboss/keycloak:10.0.1
+
+    ports:
+      - 8080:8080
+
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+  # app:
+  #   build:
+  #     context: .
+  #     dockerfile: src/Connect31/Dockerfile
+  #   ports:
+  #     - 80:80
